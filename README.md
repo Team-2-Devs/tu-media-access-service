@@ -1,4 +1,4 @@
-# tu-media-access-service
+# Trackunit Media Access Service
 ![CI](https://github.com/Team-2-Devs/tu-media-access-service/actions/workflows/ci.yml/badge.svg)
 
 Media access microservice for Trackunit.
