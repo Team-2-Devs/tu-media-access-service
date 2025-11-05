@@ -1,19 +1,19 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using MediaAccess.Application.DependencyInjection;
 
-//
+var builder = WebApplication.CreateBuilder(args);
+
 // Services
-//
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks();
 
+// Compose layers
+builder.Services.AddApplication();
+
 var app = builder.Build();
 
-
-//
 // Pipeline
-//
 if (app.Environment.IsDevelopment())
 {
   app.UseSwagger();
