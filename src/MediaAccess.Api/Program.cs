@@ -1,4 +1,5 @@
 ﻿using MediaAccess.Application.DependencyInjection;
+using MediaAccess.Infrastructure.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddHealthChecks();
 
 // Compose layers
 builder.Services.AddApplication();
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
