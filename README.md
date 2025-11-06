@@ -3,6 +3,9 @@
 
 Media access microservice for Trackunit.
 
+## Status
+Under development
+
 ## Purpose
 - Authorize internal access to media
 - Retrieve pre-signed GET URLs via Storage  
