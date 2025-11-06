@@ -4,7 +4,7 @@
 Media access microservice for Trackunit.
 
 ## Status
-Under development
+- Under development
 
 ## Purpose
 - Authorize internal access to media
@@ -14,20 +14,20 @@ Under development
 ## Endpoints (v1)
 *Note: endpoints are defined here as part of the design. They are not yet implemented unless otherwise stated.*
 
-- POST /internal/v1/media/get-url – fetch pre-signed GET URL for a single object  
-- POST /internal/v1/media/get-url-batch – (planned) fetch pre-signed GET URLs for multiple objects
-- GET  /health – service health check     
+- POST /internal/v1/media/get-url â€“ fetch pre-signed GET URL for a single object  
+- POST /internal/v1/media/get-url-batch â€“ (planned) fetch pre-signed GET URLs for multiple objects
+- GET  /health â€“ service health check     
 
 ## Tech
 - .NET 8, ASP.NET Core Web API  
-- Clean/hexagonal layering – Api, Application, Domain, Infrastructure
+- Clean/hexagonal layering â€“ Api, Application, Domain, Infrastructure
 - HTTP client integration with Storage (Typed HttpClient pattern)
 - Internal authorization for media access
 - CI via reusable org workflow (see [Team-2-Devs/.github](https://github.com/Team-2-Devs/.github))
 
 ## Related services
-- [tu-ingestion-service](https://github.com/Team-2-Devs/tu-ingestion-service) – handles upload initiation and confirmation, publishes events
-- [tu-storage-service](https://github.com/Team-2-Devs/tu-storage-service) – issues pre-signed PUT/GET URLs
+- [tu-ingestion-service](https://github.com/Team-2-Devs/tu-ingestion-service) â€“ handles upload initiation and confirmation, publishes events
+- [tu-storage-service](https://github.com/Team-2-Devs/tu-storage-service) â€“ issues pre-signed PUT/GET URLs
 
 ## Local dev
 ```bash
