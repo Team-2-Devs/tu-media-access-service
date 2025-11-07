@@ -33,3 +33,15 @@ Media access microservice for Trackunit.
 ```bash
 dotnet run --project src/MediaAccess.Api
 ```
+
+## Developer setup
+For local infrastructure (MinIO) and smoke test instructions, see [DEV.md](./docs/DEV.md).
+
+## API Contracts
+Formal versioned specifications of service-to-service interfaces.
+See [v0-mediaaccess.md](./docs/api-contracts/v0-mediaaccess.md)
+
+Frozen contract for `/internal/v0/media` endpoints:
+- `POST /get-url` (implemented)
+- `POST /get-url-batch` (planned)
+- `GET /health` (implemented)
