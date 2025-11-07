@@ -7,7 +7,7 @@ namespace MediaAccess.Api.Controllers;
 
 [ApiController]
 [Route("internal/v0/media")]
-public class MediaController : ControllerBase
+public sealed class MediaController : ControllerBase
 {
   private readonly IRequestImageAccess _requestImageAccess;
 
