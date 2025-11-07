@@ -13,6 +13,7 @@ public class MediaController : ControllerBase
 
   public MediaController(IRequestImageAccess requestImageAccess) => _requestImageAccess = requestImageAccess;
 
+  /// <summary>Internal endpoint that generates presigned GET URLs for existing media objects.</summary>
   [HttpPost("get-url")]
   public async Task<IActionResult> GetPresignedUrl([FromBody] GetUrlRequest req, CancellationToken ct)
   {

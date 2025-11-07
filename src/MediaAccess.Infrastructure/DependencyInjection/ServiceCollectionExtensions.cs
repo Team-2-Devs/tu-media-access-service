@@ -5,8 +5,10 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace MediaAccess.Infrastructure.DependencyInjection;
 
+/// <summary>Dependency injection extensions for registering Infrastructure-layer services.</summary>
 public static class ServiceCollectionExtensions
 {
+  /// <summary>Registers the HTTP client adapter for the Storage service.</summary>
   public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration config)
   {
     AddStorage(services, config);

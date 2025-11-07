@@ -15,14 +15,11 @@ public sealed class RequestImageAccess : IRequestImageAccess
 
   public async Task<RequestImageAccessResult> ExecuteAsync(RequestImageAccessCommand cmd, CancellationToken ct = default)
   {
+    // Validate
     if (string.IsNullOrWhiteSpace(cmd.ObjectKey))
-    {
-      return new RequestImageAccessResult.Invalid(new() 
-      {
-        { "objectKey", new[] { "Required" } },
-      });
-    }
+      return new RequestImageAccessResult.Invalid(new() { ["objectKey"] = ["Required"] });
 
+    // If Valid
     var result = await _storage.PresignGetAsync(
       new StoragePresignGetRequest(cmd.ObjectKey, DefaultTtlSec), ct);
 
