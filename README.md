@@ -4,7 +4,7 @@
 Media access microservice for Trackunit.
 
 ## Status
-- Under development
+- Active development
 
 ## Purpose
 - Authorize internal access to media
