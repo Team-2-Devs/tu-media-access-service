@@ -23,7 +23,7 @@ public class MediaController : ControllerBase
     return result switch
     {
       RequestImageAccessResult.Success s => Ok(new GetUrlResponse(s.Url, s.ExpiresAt)),
-      RequestImageAccessResult.Invalid i => BadRequest(new { errors = i.Errors }),
+      RequestImageAccessResult.Invalid i => UnprocessableEntity(new { errors = i.Errors }),
       RequestImageAccessResult.NotFound nf => NotFound(new { nf.ObjectKey }),
       _ => StatusCode(500)
     };
