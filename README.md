@@ -52,6 +52,6 @@ Formal versioned specifications are in:
 
 Frozen contract for `/internal/v0/media`:
 
-* `POST /get-url` *(implemented)*
-* `POST /get-url-batch` *(planned)*
-* `GET /health
+* `POST /get-url` (implemented)
+* `POST /get-url-batch` (planned)
+* `GET /health` (implemented)
