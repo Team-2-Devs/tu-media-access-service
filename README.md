@@ -1,47 +1,57 @@
 # Trackunit Media Access Service
+
 ![CI](https://github.com/Team-2-Devs/tu-media-access-service/actions/workflows/ci.yml/badge.svg)
 
-Media access microservice for Trackunit.
+Media Access microservice for Trackunit.
 
 ## Status
-- Active development
+
+* Active Development
 
 ## Purpose
-- Authorize internal access to media
-- Retrieve pre-signed GET URLs via Storage  
-- Provide single and batch URL issuance for downstream services
 
-## Endpoints (v1)
-*Note: endpoints are defined here as part of the design. They are not yet implemented unless otherwise stated.*
+* Request short-lived presigned **GET** URLs from the Storage service
+* Expose a stable internal API so downstream services never call Storage directly
+* Forward requests to Storage using a typed HttpClient
+* Require Storage’s internal access token for service-to-service calls
 
-- POST /internal/v1/media/get-url – fetch pre-signed GET URL for a single object  
-- POST /internal/v1/media/get-url-batch – (planned) fetch pre-signed GET URLs for multiple objects
-- GET  /health – service health check     
+## Endpoints (v0)
+
+*Note: endpoints describe the intended interface. Only implemented endpoints are noted.*
+
+* **POST** `/internal/v0/media/get-url` – return a presigned GET URL for one object
+* **POST** `/internal/v0/media/get-url-batch` – return presigned GET URLs for multiple objects
+* **GET** `/health` – service health check
 
 ## Tech
-- .NET 8, ASP.NET Core Web API  
-- Clean/hexagonal layering – Api, Application, Domain, Infrastructure
-- HTTP client integration with Storage (Typed HttpClient pattern)
-- Internal authorization for media access
-- CI via reusable org workflow (see [Team-2-Devs/.github](https://github.com/Team-2-Devs/.github))
+
+* .NET 8, ASP.NET Core Web API
+* Clean/hexagonal layering (Api, Application, Ports, Infrastructure)
+* Typed HttpClient for Storage integration
+* CI via reusable workflow (Team-2-Devs/.github)
 
 ## Related services
-- [tu-ingestion-service](https://github.com/Team-2-Devs/tu-ingestion-service) – handles upload initiation and confirmation, publishes events
-- [tu-storage-service](https://github.com/Team-2-Devs/tu-storage-service) – issues pre-signed PUT/GET URLs
 
-## Local dev
-```bash
-dotnet run --project src/MediaAccess.Api
-```
+* [tu-ingestion-service](https://github.com/Team-2-Devs/tu-ingestion-service)
+* [tu-storage-service](https://github.com/Team-2-Devs/tu-storage-service)
 
-## Developer setup
-For local infrastructure (MinIO) and smoke test instructions, see [DEV.md](./docs/DEV.md).
+## Local development
+
+See [DEV.md](./docs/DEV.md) for full setup instructions.
+
+Two modes:
+
+* Docker Compose (recommended)
+* dotnet run (debugging)
 
 ## API Contracts
-Formal versioned specifications of service-to-service interfaces.
-See [v0-mediaaccess.md](./docs/api-contracts/v0-mediaaccess.md)
 
-Frozen contract for `/internal/v0/media` endpoints:
-- `POST /get-url` (implemented)
-- `POST /get-url-batch` (planned)
-- `GET /health` (implemented)
+Formal versioned specifications are in:
+
+[`v0-mediaaccess.md`](./docs/api-contracts/v0-mediaaccess.md)
+
+Frozen contract for `/internal/v0/media`:
+
+* `POST /get-url` *(implemented)*
+* `POST /get-url-batch` *(planned)*
+* `GET /health
