@@ -33,7 +33,7 @@ public sealed class RequestImageAccessTests
     success.ExpiresAt.Should().Be(expiresAt);
 
     storage.LastGetRequest.Should().NotBeNull();
-    storage.LastGetRequest!.ObjectKey.Should().Be(objectKey);
+    storage.LastGetRequest!.Key.Should().Be(objectKey);
     storage.LastGetRequest!.TtlSec.Should().Be(300);
   }
 
